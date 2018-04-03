@@ -1,3 +1,4 @@
+import unittest
 
 def urlify(s, length):
     index = length - 1
@@ -19,5 +20,17 @@ def urlify(s, length):
 
     return "".join(l)
 
+
+class Test(unittest.TestCase):
+    '''Test Cases'''
+    data = [
+        ('much ado about nothing      ', 22, 'much%20ado%20about%20nothing'),
+        ('Mr John Smith    ', 13, 'Mr%20John%20Smith')]
+
+    def test_urlify(self):
+        for [test_string, length, expected] in self.data:
+            actual = urlify(test_string, length)
+            self.assertEqual(actual, expected)
+
 if __name__ == "__main__":
-    urlify("Mr John Smith    ", 13)
+    unittest.main()
