@@ -5,7 +5,6 @@ def rotate_matrix(matrix):
     for layer in xrange(n // 2):
         first, last = layer, n - layer - 1
         for i in xrange(first, last):
-
             top = matrix[layer][i]
 
             matrix[layer][i] = matrix[-i - 1][layer]
@@ -15,6 +14,7 @@ def rotate_matrix(matrix):
             matrix[-layer - 1][-i - 1] = matrix[i][- layer - 1]
 
             matrix[i][- layer - 1] = top
+
     return matrix
 
 
