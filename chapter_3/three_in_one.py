@@ -18,7 +18,7 @@ class ThreeInOne(object):
 
         i = 1
         for x in xrange(0, self.size, self.stacksize):
-            self.stacks[i] = Stack(x, x + self.stacksize -1, -1)
+            self.stacks[i] = Stack(x, x + self.stacksize -1, x-1)
             #print(self.stacks[i])
             i += 1
 
@@ -30,7 +30,8 @@ class ThreeInOne(object):
     def isEmpty(self, stacknum):
         stack = self.stacks[stacknum]
 
-        return stack.current_index == -1
+        return stack.current_index == -1 or \
+                stack.current_index < stack.start_index
 
     def push(self, item, stacknum):
         stack = self.stacks[stacknum]
