@@ -3,9 +3,13 @@ package node
 import "fmt"
 
 type Node struct{
-    Value int
+    Value interface{}
     Left *Node
     Right *Node
+}
+
+func (n *Node) ListChildren() (*Node,*Node){
+    return n.Left, n.Right
 }
 
 func (n *Node) String() string{
