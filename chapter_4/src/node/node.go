@@ -15,3 +15,9 @@ func (n *Node) ListChildren() (*Node,*Node){
 func (n *Node) String() string{
     return fmt.Sprintf("Left:%d, Value:%d, Right:%v", n.Left.Value, n.Value, n.Right.Value)
 }
+
+func (n *Node) GetInt() int{
+    val, _ := n.Value.(int)
+
+    return val
+}
