@@ -26,10 +26,11 @@ func isLeftBalanced(rootNode *node.Node) bool{
        }
     }
 
-    array_children := make([]*node.Node, 0, 5)
     array := []*node.Node{rootNode.Left}
 
     for len(array) > 0 {
+        array_children := make([]*node.Node, 0, 5)
+
         for idx, rN := range array{
              Val = rN.GetInt()
              // evaluating left
@@ -40,7 +41,7 @@ func isLeftBalanced(rootNode *node.Node) bool{
                  } else if idx > 0 && leftVal <= Val {
                      fmt.Println("Si")
                  }else{
-                     fmt.Println(leftVal)
+                     fmt.Println("left:", leftVal)
                      return false
                  }
                  array_children = append(array_children, rN.Left)
@@ -50,7 +51,7 @@ func isLeftBalanced(rootNode *node.Node) bool{
              if rN.Right != nil{
                  rightVal = rN.Right.GetInt()
                  if rightVal < Val || rightVal > max {
-                     fmt.Println(rightVal)
+                     fmt.Println("right:", rightVal)
                      return false
                  }
                  array_children = append(array_children, rN.Right)
@@ -69,7 +70,7 @@ func createBT() *node.Node{
     root.Right = &node.Node{Value:6}
     left := root.Left
     left.Left = &node.Node{Value:1}
-    left.Right = &node.Node{Value:2}
+    left.Right = &node.Node{Value:4}
 
     right := root.Right
     right.Left = &node.Node{Value:20}
