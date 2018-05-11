@@ -5,6 +5,11 @@ type Graph struct{
     adjacents map[string][]*Node
 }
 
+type GraphHashLike struct{
+    Vertices map[string][]string
+    TotalVertex int
+}
+
 type Node struct {
     Vertex string
     Visited bool
@@ -37,6 +42,21 @@ func (g *Graph) GetNodes() []*Node{
     return g.vertices
 }
 
+func (g *GraphHashLike) AddEdge(k string, v string){
+    s, ok := g.Vertices[k]
+    if ok {
+        g.Vertices[k] = append(s, v)
+        return
+    }
+
+    g.Vertices[k] = make([]string, 0, g.TotalVertex)
+    g.Vertices[k] = append(g.Vertices[k], v)
+}
+
 func New() *Graph{
     return &Graph{adjacents: make(map[string][]*Node)}
+}
+
+func NewGraphHashLike(vertex int) *GraphHashLike{
+    return &GraphHashLike{Vertices: make(map[string][]string), TotalVertex: vertex}
 }
